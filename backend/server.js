@@ -9,6 +9,7 @@ dotenv.config();
 
 // middleware --------------
 app.use(cors());
+app.use(express.json());
 
 // routes ------------------
 readdirSync("./routes").map((f) => app.use("/", require("./routes/" + f)));
@@ -19,6 +20,11 @@ mongoose.connect(process.env.MONGODB_CONNECTION_URL).then(() => {
   console.log("Database connected");
 });
 
+// console.log(+new Date() * Math.random().toString().substring(0, 1));
+
+console.log();
+
+// port----------
 const port = process.env.PORT || 8000;
 
 app.listen(port, () => {
