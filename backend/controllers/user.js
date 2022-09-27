@@ -9,6 +9,7 @@ const {
 const bcrypt = require("bcrypt");
 const { generateToken } = require("../helpers/tokens.js");
 const { sendVerificationEmail } = require("../helpers/mailer.js");
+
 exports.register = async (req, res) => {
   const {
     first_name,
@@ -99,4 +100,8 @@ exports.register = async (req, res) => {
       message: "Registr Success! Activate your email to start",
     });
   }
+};
+
+exports.activateAccount = async (req, res) => {
+  const { token } = req.body;
 };
